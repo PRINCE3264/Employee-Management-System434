@@ -1,23 +1,33 @@
-#Title 
+🏢 Title:
 
-Employee Management System — ASP.NET Core Web API (Identity + JWT) + Angular 
+Employee Management System — ASP.NET Core Web API (JWT Authentication) + Angular
 
-#Description
+📝Description:
 
-This document contains a compact, working starter blueprint and ready-to-use code snippets to build an Employee Management System with features you requested:
+This project is a full-stack Employee Management System built with ASP.NET Core Web API (backend) and Angular (frontend).
+It includes secure JWT-based authentication and role-based access control for Admin and Employee users.
 
-Departments: Add / Edit / Delete / List
+🔑 Key Features:
 
-Employees: CRUD, tie to User (Identity), profile update
+Authentication: Login & Register using ASP.NET Core Identity with JWT tokens
 
-Auth: Register / Login using ASP.NET Core Identity + JWT
+Role Management: Admin and Employee roles with protected routes
 
-Leave: Apply (Employee), Approve / Reject (Admin), List by role
+Departments: Add, Edit, Delete, and View department details
 
-Attendance: Mark attendance (Employee) and list
+Employees: CRUD operations with linked user accounts and profile management
 
-Role-based endpoints (Admin vs Employee)
+Leave Management:
 
+Employees can apply or cancel leave
+
+Admins can approve or reject leave requests
+
+Attendance Module: Employees can mark attendance; Admins can view attendance reports
+
+Angular Frontend: Responsive UI with Angular Material and Tailwind CSS
+
+Secure API: Token-based authentication for all protected endpoints
 
 # WebApp
 
