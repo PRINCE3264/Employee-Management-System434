@@ -1,0 +1,57 @@
+<div class="flex justify-center p-6">
+  <mat-card class="w-full max-w-md p-4 shadow-lg rounded-xl">
+    <mat-card-header>
+      <mat-card-title class="text-xl! font-bold! text-center! text-gray-800!">
+        Profile
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form class="flex flex-col gap-4" [formGroup]="profileForm" (ngSubmit)="onUpdate()">
+
+        <!-- Profile Image Upload + Preview -->
+        <div class="w-full flex flex-col items-center my-4 relative group">
+          <img [src]="imageSrc || 'assets/default-profile.png'" alt="Profile"
+            class="w-32 h-32 rounded-full object-cover shadow-md transition-transform duration-300 group-hover:scale-105 border-2 border-gray-300" />
+
+          <label for="profileInput"
+            class="absolute bottom-0 right-[30%] bg-white rounded-full p-1 shadow group-hover:scale-105 cursor-pointer transition">
+            <mat-icon class="text-blue-600">edit</mat-icon>
+          </label>
+          <input id="profileInput" type="file" (change)="fileUpload($event)" class="hidden" />
+        </div>
+
+        <!-- Email -->
+        <mat-form-field class="w-full">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" />
+        </mat-form-field>
+
+        <!-- Name -->
+        <mat-form-field class="w-full">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" type="text" />
+        </mat-form-field>
+
+        <!-- Phone -->
+        <mat-form-field class="w-full">
+          <mat-label>Phone</mat-label>
+          <input matInput formControlName="phone" type="tel" />
+        </mat-form-field>
+
+        <!-- Password -->
+        <mat-form-field class="w-full">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password" />
+        </mat-form-field>
+
+        <!-- Update Button -->
+        <button mat-raised-button color="primary"
+          class="bg-green-500! text-white! hover:bg-green-600! transition-all duration-300! transform hover:scale-105!">
+          Update
+        </button>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

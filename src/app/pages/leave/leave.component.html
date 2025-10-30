@@ -1,0 +1,21 @@
+<div class="p-8 bg-gradient-to-tr from-indigo-100 to-white min-h-screen">
+  <h1 class="text-3xl font-bold text-indigo-700 mb-4 animate-pulse">🌿 Leave Requests</h1>
+  <ng-container *ngIf="data; else loading">
+    <ng-container *ngIf="data.data.length > 0; else noRecords">
+      <app-table [data]="data.data" [displayedColumns]="showCols" (rowClick)="handleRowAction($event)">
+      </app-table>
+
+      <mat-paginator [length]="data.totalCount" [pageSize]="filter.pageSize" [pageIndex]="filter.pageIndex"
+        [pageSizeOptions]="[5, 10, 25, 50]" (page)="onPageChange($event)" class="mt-4 bg-white rounded-md shadow">
+      </mat-paginator>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #loading>
+    <div class="text-center text-gray-600 text-lg mt-6 animate-pulse">Loading leave data...</div>
+  </ng-template>
+
+  <ng-template #noRecords>
+    <div class="text-center text-red-500 text-lg mt-6">No leave records found.</div>
+  </ng-template>
+</div>

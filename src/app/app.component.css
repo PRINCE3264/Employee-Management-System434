@@ -1,0 +1,19 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0b50d1; /* Match your current text color */
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.menu-item mat-icon {
+  font-size: 20px;
+}

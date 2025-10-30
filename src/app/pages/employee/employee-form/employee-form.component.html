@@ -1,0 +1,94 @@
+<mat-card class="w-[350px] mx-auto  p-2 rounded-2xl shadow-xl">
+  <!-- Title -->
+  <h2 class="text-xl font-sarif! text-center! mb-2 mt-1">
+    {{ data?.employeeId ? 'Update Employee' : 'Add Employee' }}
+  </h2>
+
+  <!-- Form -->
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <!-- Name -->
+    <mat-form-field appearance="fill" class="w-full h-[70px] ">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required />
+      <mat-error *ngIf="employeeForm.get('name')?.hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+
+    <!-- Email -->
+    <mat-form-field appearance="fill" class="w-full h-[70px]  ">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" required />
+      <mat-error *ngIf="employeeForm.get('email')?.hasError('required')">Email is required</mat-error>
+    </mat-form-field>
+
+    <!-- Phone -->
+    <mat-form-field appearance="fill" class="w-full h-[70px]  ">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone" required />
+      <mat-error *ngIf="employeeForm.get('phone')?.hasError('required')">Phone is required</mat-error>
+    </mat-form-field>
+
+    <!-- Gender -->
+    <div class="flex items-center gap-4 ">
+      <label class="text-sm font-medium">Gender</label>
+      <mat-radio-group formControlName="gender" class="flex gap-4">
+        <mat-radio-button value="Male">Male</mat-radio-button>
+        <mat-radio-button value="Female">Female</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <!-- Job Title and Department -->
+    <div class="flex gap-2">
+      <!-- Job Title -->
+      <mat-form-field appearance="fill" class="w-1/2 h-[70px] ">
+        <mat-label>Job Title</mat-label>
+        <mat-select formControlName="jobTitle" required>
+          <mat-option *ngFor="let title of jobTitles" [value]="title">{{ title }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Department -->
+      <mat-form-field appearance="fill" class="w-1/2 h-[70px] ">
+        <mat-label>Department</mat-label>
+        <mat-select formControlName="departmentId" required>
+          <mat-option *ngFor="let item of departments" [value]="item.id">
+            {{ item.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Date of Birth -->
+    <mat-form-field appearance="fill" class="w-full  h-[70px] ">
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [matDatepicker]="dobPicker" formControlName="dateOfBirth" />
+      <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dobPicker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- Joining Date & Last Working Date -->
+    <div class="flex gap-2 ">
+      <mat-form-field appearance="fill" class="w-1/2  h-[70px] ">
+        <mat-label>Joining Date</mat-label>
+        <input matInput [matDatepicker]="joinPicker" formControlName="joiningDate" />
+        <mat-datepicker-toggle matSuffix [for]="joinPicker"></mat-datepicker-toggle>
+        <mat-datepicker #joinPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-1/2 h-[70px] ">
+        <mat-label>Last Working Date</mat-label>
+        <input matInput [matDatepicker]="lastPicker" formControlName="lastWorkingDate" />
+        <mat-datepicker-toggle matSuffix [for]="lastPicker"></mat-datepicker-toggle>
+        <mat-datepicker #lastPicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <!-- Submit Button -->
+    <button mat-flat-button color="primary" type="submit" class="w-full text-white! text-lg font-semibold! rounded-lg"
+      [disabled]="employeeForm.invalid" [ngClass]="{
+        '!bg-gray-500': employeeForm.invalid,
+        '!bg-green-600': employeeForm.valid
+      }">
+      {{ data?.employeeId ? 'Update' : 'Add' }}
+    </button>
+  </form>
+</mat-card>

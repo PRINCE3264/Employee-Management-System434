@@ -1,0 +1,57 @@
+<!-- <div class="p-8">
+  <div class="flex justify-between items-center ">
+    <h1 class="text-2xl font-serif!">Employee List👨‍🎓👨‍🎓</h1>
+
+    <mat-form-field class="w-[300px] h-[70px]">
+      <mat-label>Search</mat-label>
+      <input type="text" matInput [formControl]="searchControl" />
+    </mat-form-field>
+
+
+
+    <button mat-flat-button color="primary"
+      class="bg-green-500! hover:bg-green-600! text-white font-medium py-2 px-4 rounded" (click)="add()">
+      Add
+    </button>
+  </div>
+
+  <app-table [data]="employeeList" [displayedColumns]="showCol" (onEdit)="edit($event)" (onDelete)="delete($event)">
+  </app-table>
+  <div>
+    <mat-paginator #paginator (page)="pageChange($event)" [length]="employeeList.length" [pageIndex]="filter.pageIndex"
+      [pageSize]="filter.pageSize" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+
+    </mat-paginator>
+  </div>
+</div> -->
+
+
+
+<div class="p-8">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-serif">Employee List 👨‍🎓</h1>
+
+    <mat-form-field class="w-[300px] h-[70px]">
+      <mat-label>Search</mat-label>
+      <input type="text" matInput [formControl]="searchControl" />
+    </mat-form-field>
+
+    <button mat-flat-button color="primary"
+      class="!bg-green-500 hover:!bg-green-600 text-white font-medium py-2 px-4 rounded" (click)="add()">
+      Add
+    </button>
+  </div>
+
+
+
+  <app-table [data]="employeeList" [displayedColumns]="showCol" (onEdit)="edit($event)" (onDelete)="delete($event)"
+    (onAttendance)="markAttendance($event)">
+  </app-table>
+
+
+  <div class="mt-4">
+    <mat-paginator (page)="pageChange($event)" [length]="totalCount" [pageIndex]="filter.pageIndex"
+      [pageSize]="filter.pageSize" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+    </mat-paginator>
+  </div>
+</div>

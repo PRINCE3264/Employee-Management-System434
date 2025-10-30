@@ -1,0 +1,57 @@
+<div class="p-8">
+  <!-- Show Department List -->
+  <div *ngIf="isFormOpen">
+    <div class="flex justify-between! mb-2">
+      <h1 class="text-center! font-serif! text-2xl!">Departments 🧑‍💻🧑‍💻</h1>
+      <button class="bg-green-500!" mat-flat-button color="primary" (click)="isFormOpen = false">Add</button>
+    </div>
+
+    <table class="table-auto! border-collapse! w-full">
+      <thead>
+        <tr>
+          <th class="px-2 py-1 text-center">Id</th>
+          <th class="text-center px-2 py-1">Name</th>
+          <th class="text-center px-2 py-1">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of departments; let i = index">
+          <td class="text-center px-2 py-1">{{ item.id }}</td>
+          <td class="text-center px-2 py-1">{{ item.name }}</td>
+          <td class="flex justify-center gap-4 px-2 py-1">
+            <button mat-flat-button color="accent" (click)="editDepartment(item)" class="flex gap-4 p-4">Edit</button>
+            <button class="bg-red-500!" mat-flat-button color="warn" (click)="deleteDepartment(item.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Show Add/Edit Form -->
+  <div *ngIf="!isFormOpen" class="flex justify-center">
+    <form class="w-[300px] shadow-lg py-6 px-6">
+      <h1 class="text-xl font-semibold mb-4">
+        {{ isEdit ? 'Edit Department' : 'Add Department' }}
+      </h1>
+
+      <mat-form-field class="w-full">
+        <mat-label>Name</mat-label>
+        <input matInput name="departmentName" [(ngModel)]="departmentName">
+      </mat-form-field>
+
+      <div class="w-full flex justify-center mt-4">
+        <button class="bg-green-500!" *ngIf="isEdit" type="button" (click)="updateDepartment()" mat-flat-button
+          color="accent">
+          Update
+        </button>
+        <button class="bg-green-500!" *ngIf="!isEdit" type="button" (click)="addDepartment()" mat-flat-button
+          color="primary">
+          Add
+        </button>
+        <button type="button" (click)="resetForm()" mat-flat-button class="ml-2">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
