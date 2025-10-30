@@ -10,7 +10,7 @@ namespace EmployeeManagement22.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
+            _ = migrationBuilder.DropColumn(
                 name: "Department",
                 table: "Employees");
 

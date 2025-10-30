@@ -21,6 +21,7 @@ namespace EmployeeManagement22.Data
 */
 
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace EmployeeManagement22.Data
@@ -29,6 +30,7 @@ namespace EmployeeManagement22.Data
     {
         // Get all entities — no ID needed
         Task<List<T>> GetAll();
+        Task<List<T>> GetAll(Expression<Func<T, bool>> filter);
 
         // Find entity by id asynchronously
         Task<T> FindByIdAsync(int id);

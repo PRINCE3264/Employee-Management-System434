@@ -27,5 +27,9 @@ namespace EmployeeManagement22.Entity
         public DateTime JoiningDate { get; set; }
         public DateTime LastWorkingDate { get; set; }
         public DateTime DateOfBirth { get; set; }
+
+        public int? UserId { get; set; }
+        public User? User { get; set; }
     }
+
 }
